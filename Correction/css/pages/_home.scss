@@ -1,0 +1,136 @@
+body {
+  font-family: 'Varela Round', sans-serif;
+}
+h1 {
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: center;
+}
+.buttons {
+  display: flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom: 50px;
+}
+button {
+  background:none;
+  border:2px solid rebeccapurple;
+  border-radius:5px;
+  padding:15px;
+  cursor:pointer;
+  transition:.3s all ease-in-out;
+  &:hover {
+    background:rebeccapurple;
+    color:#fff;
+  }
+  &.active {
+    background:rebeccapurple;
+    color:#fff;
+  }
+}
+.wrapper {
+  max-width: 1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:10px;
+  @media screen and (max-width:1000px) {
+    grid-template-columns:repeat(3, 1fr);
+  }
+  @media screen and (max-width:600px) {
+    grid-template-columns:repeat(2, 1fr);
+  }
+  @media screen and (max-width:400px) {
+    grid-template-columns:repeat(1, 1fr);
+  }
+}
+img {
+  max-width:100%;
+  display: block;
+}
+h2 {
+  text-align: center;
+  font-weight: normal;
+  font-size: 16px;
+}
+.tv-show {
+  cursor:pointer;
+  padding:10px;
+  overflow: hidden;
+  &__img {
+    position: relative;
+    &::before {
+      content:'';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:0;
+      left:0;
+      background: linear-gradient(315deg, rgba(80,172,180,0.8269432773109244) 0%, rgba(236,9,136,0.2779236694677871) 100%);
+      opacity:0;
+      transition:.3s all ease-in-out;
+    }
+  }
+  &:hover .tv-show__img::before {
+    opacity:1;
+  }
+  &:hover .note {
+    transform:translateX(0);
+    
+  }
+}
+.note {
+  position: absolute;
+  bottom:5px;
+  right:5px;
+  font-size: 30px;
+  color:#fff;
+  transform:translateX(120%);
+  transition:.3s all ease-in-out;
+}
+.popup {
+  position: fixed;
+  background:#fff;
+  width: 90%;
+  height: 90%;
+  top:50%;
+  left:50%;
+  box-shadow:0 0 30px rgba(0,0,0,0.25);
+  transform:translate(-50%, 100%);
+  transition:.3s all ease-in-out;
+  display: flex;
+  &.active {
+    transform:translate(-50%,-50%);
+  }
+  &__img {
+    width: 40%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__txt {
+    width: 60%;
+    padding:25px;
+    h3 {
+      text-align: center;
+      font-weight: normal;
+      font-size: 50px;
+    }
+    p {
+      text-align: center;
+      line-height: 30px;
+    }
+  }
+  .close {
+    position: absolute;
+    top:20px;
+    right:20px;
+    cursor:pointer;
+    transition:.3s all ease-in-out;
+    &:hover {
+      transform:rotate(360deg) scale(1.2);
+    }
+  }
+}
